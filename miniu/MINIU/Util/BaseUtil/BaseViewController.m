@@ -84,6 +84,7 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSLog(@"%@ viewWillAppear",self.class);
 }
 
 #pragma mark 视图将要退出

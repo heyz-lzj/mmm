@@ -333,6 +333,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     //如果是重chat view controller 进来的话 则不显示toolbar
     id subController = (self.navigationController.childViewControllers)[self.navigationController.childViewControllers.count-2];
     if (subController) {
@@ -649,7 +650,7 @@
 {
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-        [_scrollView setContentSize:CGSizeMake(kScreen_Width, 650)];
+        [_scrollView setContentSize:CGSizeMake(kScreen_Width, 650 + 40)];
         _scrollView.alwaysBounceVertical = YES;
         _scrollView.delegate = self;
     }

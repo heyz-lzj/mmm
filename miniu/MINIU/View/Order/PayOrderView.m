@@ -11,12 +11,17 @@
 
 @interface PayOrderView()
 
-@property (nonatomic, strong) UILabel *topTipLable;      // 提示信息
-@property (nonatomic, strong) UILabel *priceLable;      // 价格
-@property (nonatomic, strong) FUIButton *wxpayButton;     //微信支付按钮
-@property (nonatomic, strong) UILabel *chooseOtherPayment; //选择其他支付按钮
-@property (nonatomic, strong) UIButton *alipayButton;   // 支付宝支付按钮
-@property (nonatomic, strong) UIButton *bankCardPayButton; //银行卡支付按钮
+@property (nonatomic, strong) UILabel *topTipLable;         // 提示信息
+@property (nonatomic, strong) UILabel *priceLable;          // 价格
+
+@property (nonatomic, strong) UILabel *taxLabel;            //税
+@property (nonatomic, strong) UILabel *totalLabel;          //到手价
+@property (nonatomic, strong) UILabel *taxDescLabel;        //价格解释文本
+
+@property (nonatomic, strong) FUIButton *wxpayButton;       //微信支付按钮
+@property (nonatomic, strong) UILabel *chooseOtherPayment;  //选择其他支付按钮
+@property (nonatomic, strong) UIButton *alipayButton;       // 支付宝支付按钮
+@property (nonatomic, strong) UIButton *bankCardPayButton;  //银行卡支付按钮
 
 @end
 
@@ -26,7 +31,7 @@
 {
     self = [super init];
     if (self) {
-                
+        
         WeakSelf
         self.topTipLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, kScreen_Width, 18)];
         [self.topTipLable setTextColor:[UIColor colorWithRed:0.439 green:0.439 blue:0.439 alpha:1]];
@@ -34,12 +39,29 @@
         [self.topTipLable setTextAlignment:NSTextAlignmentCenter];
         [self.topTipLable setText:@"代购订单已生成,请尽快支付噢"];
         
-        
-        self.priceLable = [[UILabel alloc] initWithFrame:CGRectMake(0, _topTipLable.selfMaxY + 20, kScreen_Width, 30)];
+        self.priceLable = [[UILabel alloc] initWithFrame:CGRectMake(0, _topTipLable.selfMaxY + 20, kScreen_Width, 24)];
         [self.priceLable setTextAlignment:NSTextAlignmentCenter];
-        [self.priceLable setFont:[UIFont systemFontOfSize:30]];
+        [self.priceLable setFont:[UIFont systemFontOfSize:18]];
+
+        self.taxLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _priceLable.selfMaxY + 5, kScreen_Width, 20)];
+        [self.taxLabel setTextAlignment:NSTextAlignmentCenter];
+        [self.taxLabel setFont:[UIFont systemFontOfSize:13]];
+        self.taxLabel.textColor = [UIColor colorWithHexString:@"333333"];
         
-        self.wxpayButton = [[FUIButton alloc] initWithFrame:CGRectMake(50, _priceLable.selfMaxY + 20, kScreen_Width - 100, 43)];//100->20
+        self.totalLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _taxLabel.selfMaxY + 5, kScreen_Width, 20)];
+        [self.totalLabel setTextAlignment:NSTextAlignmentCenter];
+        [self.totalLabel setFont:[UIFont systemFontOfSize:13]];
+        self.totalLabel.textColor = [UIColor colorWithRed:219/255.0 green:16/255.0 blue:94/255.0 alpha:1];
+
+        
+        self.taxDescLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, _totalLabel.selfMaxY + 5, kScreen_Width-60, 60)];
+        [self.taxDescLabel setFont:[UIFont systemFontOfSize:12]];
+        self.taxDescLabel.numberOfLines = 4;
+        self.taxDescLabel.textColor = [UIColor colorWithHexString:@"929292"];
+        self.taxDescLabel.text = @"到手价=商品成交价格+税费+运费\n中国海关规定进口商品需要缴纳进口税，每个商品因类目不同，有不同的税率。\n进口税=商品完税X税率，完税价格由海关最终认定";
+
+        
+        self.wxpayButton = [[FUIButton alloc] initWithFrame:CGRectMake(50, _taxDescLabel.selfMaxY + 20, kScreen_Width - 100, 43)];//100->20
         [self.wxpayButton setTitle:@"微信支付" forState:UIControlStateNormal];
         [self.wxpayButton setButtonColor:[UIColor colorWithRed:0.325 green:0.843 blue:0.412 alpha:1]];
         self.wxpayButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
@@ -79,6 +101,9 @@
         
         [self addSubview:_topTipLable];
         [self addSubview:_priceLable];
+        [self addSubview:_taxLabel];
+        [self addSubview:_totalLabel];
+        [self addSubview:_taxDescLabel];
         [self addSubview:_wxpayButton];
         [self addSubview:_chooseOtherPayment];
         [self addSubview:_alipayButton];
@@ -110,9 +135,36 @@
     // 如果定金大于0并且订单状态为未支付则进行定金支付
     if (order.totalBailAmount > 0 && order.orderStatus == orderStatusOfWaitPayment) {
         [self.priceLable setText:[NSString stringWithFormat:@"定金：￥%0.2f", order.totalBailAmount]];
-    // 否则为支付全款
+        // 否则为支付全款
     } else {
         [self.priceLable setText:[NSString stringWithFormat:@"金额：￥%0.2f", order.totalAmount]];
+    }
+    
+    //新需求 2016.11.11 需要显示进口税价格
+    if(order.totalAmount > order.price.integerValue){
+        //如果后台返回数据是带有税的
+        [self.priceLable setText:[NSString stringWithFormat:@"商品金额：￥%0.2f", order.price.floatValue]];
+        
+        NSMutableAttributedString *content = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"进口税：预计 ￥%0.2f",0.119*order.price.floatValue]];
+        NSRange contentRange = {0,[content length]};
+        [content addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:contentRange];
+        self.taxLabel.attributedText = content;
+        
+        self.totalLabel.text = [NSString stringWithFormat:@"到手价：￥%0.2f",order.totalAmount];
+
+        
+        
+    }else{
+        //前台计算
+        [self.priceLable setText:[NSString stringWithFormat:@"商品金额：￥%0.2f", order.price.floatValue]];
+        
+        NSMutableAttributedString *content = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"进口税：预计 ￥%0.2f",0.119*order.price.floatValue]];
+        NSRange contentRange = {0,[content length]};
+        [content addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:contentRange];
+        self.taxLabel.attributedText = content;
+//        self.taxLabel.text = [NSString stringWithFormat:@"进口税：预计 ￥%0.2f",0.119*order.price.floatValue];
+        self.totalLabel.text = [NSString stringWithFormat:@"到手价：￥%0.2f",1.119*order.price.floatValue];
+
     }
 }
 
