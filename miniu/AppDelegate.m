@@ -48,14 +48,6 @@
     if(sysVer < 8){
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
     }else{
-//#if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
-        
-//        李伟的设置
-//        UIMutableUserNotificationCategory *categorys = [[UIMutableUserNotificationCategory alloc] init];
-//        UIUserNotificationSettings *userSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert
-//                                                                                     categories:[NSSet setWithObject:categorys]];
-//        [[UIApplication sharedApplication] registerUserNotificationSettings:userSettings];
-//        [[UIApplication sharedApplication] registerForRemoteNotifications];
         
         //环信的推送注册方法
         if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {

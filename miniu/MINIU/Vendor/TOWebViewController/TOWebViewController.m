@@ -502,7 +502,15 @@ MFMessageComposeViewControllerDelegate>
                 return;
             }
             
-            if (![data isKindOfClass:[NSMutableDictionary class]]) {
+        //处理 商品tag name
+            if (![data isKindOfClass:[NSDictionary class]]) {
+                if ([data isKindOfClass:[NSString class]]) {
+                    NSString *tagName = data;
+                    if (tagName && [tagName length]) {
+                        [self openTagViewController:tagName];
+                        return;
+                    }
+                }
                 responseCallback([self sendJsonResponseWithMessage:@"params is Invalid json string!" status:NO data:nil]);
                 return;
             }
