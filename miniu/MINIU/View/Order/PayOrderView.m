@@ -8,7 +8,7 @@
 
 #import "PayOrderView.h"
 #import "OrderEntity.h"
-
+#import "FUIAlertView.h"
 @interface PayOrderView()
 
 @property (nonatomic, strong) UILabel *topTipLable;         // 提示信息
@@ -177,5 +177,10 @@
 
 - (void)tapToShowTaxDescreaption:(UITapGestureRecognizer *)tap{
     [self.findViewController showHudSuccess:@"到手价=商品成交价格+税费+运费\n中国海关规定进口商品需要缴纳进口税，每个商品因类目不同，有不同的税率。\n进口税=商品完税X税率，完税价格由海关最终认定"];
+    FUIAlertView *alert = [[FUIAlertView alloc]initWithTitle:@"总价规则" message:@"到手价=商品成交价格+税费+运费\n中国海关规定进口商品需要缴纳进口税，每个商品因类目不同，有不同的税率。\n进口税=商品完税X税率，完税价格由海关最终认定" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
+    alert.backgroundColor = [UIColor clearColor];
+    [alert show];
+    
+    
 }
 @end

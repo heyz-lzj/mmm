@@ -43,13 +43,13 @@
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
         UIView *backgroundOverlay = [[UIView alloc] init];
-        backgroundOverlay.backgroundColor = [UIColor blueColor];
+        backgroundOverlay.backgroundColor = [UIColor clearColor];
         [self addSubview:backgroundOverlay];
         backgroundOverlay.alpha = 0;
         _backgroundOverlay = backgroundOverlay;
         
         UIView *alertContainer = [[UIView alloc] init];
-        alertContainer.backgroundColor = [UIColor yellowColor];
+        alertContainer.backgroundColor = [UIColor whiteColor];
         [self addSubview:alertContainer];
         [self bringSubviewToFront:alertContainer];
         _alertContainer = alertContainer;
@@ -197,7 +197,7 @@
 }
 
 - (CGSize) calculateSize {
-    CGFloat contentWidth = 250;
+    CGFloat contentWidth = kScreen_Width/320.f * 250;
     
     CGFloat titleHeight;
     CGFloat messageHeight;
