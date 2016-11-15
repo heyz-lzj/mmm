@@ -105,7 +105,6 @@
 {
     [super viewWillAppear:animated];
 
-    
     [self setToolbarView];
     
     [self setImgPlyer];
@@ -233,7 +232,7 @@
     _custView = [[UIView alloc] init];
     [_scrollView addSubview:_custView];
     
-    UILabel *titleLable = [[UILabel alloc]initWithFrame:CGRectMake(10, 20, kScreen_Width - 20, 30)];
+    UILabel *titleLable = [[UILabel alloc]initWithFrame:CGRectMake(10, 20, kScreen_Width - 20, 40)];
    // titleLable.text = _goodsEntity.goodsTags;
     titleLable.text = _goodsEntity.depictRemark;
     titleLable.textAlignment = NSTextAlignmentCenter;
@@ -293,16 +292,16 @@
    
     //[_custView addSubview:lable];
     
-    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(priceLable.frame)+20, kScreen_Width, kScreen_Width*72/750)];
-   // imgView.backgroundColor = [UIColor lightGrayColor];
-    imgView.image = [UIImage imageNamed:@"商品列表页_24.png"];
-    [_custView addSubview:imgView];
+//    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(priceLable.frame)+20, kScreen_Width, kScreen_Width*72/750)];
+//   // imgView.backgroundColor = [UIColor lightGrayColor];
+//    imgView.image = [UIImage imageNamed:@"商品列表页_24.png"];
+//    [_custView addSubview:imgView];
     
     UILabel *textLabel = [[UILabel alloc] init];
     NSString *str = _goodsEntity.depictRemark;
     CGSize contentSize = [_goodsEntity.depictRemark getSizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(kScreen_Width-30, CGFLOAT_MAX) andLineSpacing:3.5];
     CGFloat h = contentSize.height;
-    textLabel.frame = CGRectMake(15, CGRectGetMaxY(imgView.frame) + 5, kScreen_Width - 30, h);
+    textLabel.frame = CGRectMake(15, CGRectGetMaxY(priceLable.frame) + 5, kScreen_Width - 30, h);
     textLabel.text = str;
     textLabel.numberOfLines = 0;
    // textLabel.textAlignment = NSTextAlignmentTop;
@@ -318,13 +317,15 @@
 
 - (void) setToolbarView
 {
+    CGFloat xpos = (kScreen_Width*0.25 - (39/36.0) * (TOOLBAR_HEIGHT - 6))/2;
+    
     UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width*0.25, TOOLBAR_HEIGHT)];
     leftView.backgroundColor = [UIColor colorWithRed:0.941 green:0.941 blue:0.941 alpha:1];
     leftView.tag = LEFTVIEW_TAG;
     _chatButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _chatButton.frame = CGRectMake(9, 3, leftView.frame.size.width - 18, TOOLBAR_HEIGHT - 6);
-    [_chatButton setImage:[UIImage imageNamed:@"未标题-2_4"] forState:UIControlStateNormal];
-    _chatButton.imageEdgeInsets = UIEdgeInsetsMake(0, 12, 0, 12);
+    _chatButton.frame = CGRectMake(xpos, 3, (39/36.0) * (TOOLBAR_HEIGHT - 6), TOOLBAR_HEIGHT - 6);
+    [_chatButton setImage:[UIImage imageNamed:@"未标题-2_4"] forState:UIControlStateNormal];//78 72
+//    _chatButton.imageEdgeInsets = UIEdgeInsetsMake(0, 12, 0, 12);
     [_chatButton addTarget:self action:@selector(sendMessage) forControlEvents:UIControlEventTouchUpInside];
     [leftView addSubview:_chatButton];
     
@@ -332,10 +333,10 @@
     favoritView.backgroundColor = [UIColor colorWithRed:0.941 green:0.941 blue:0.941 alpha:1];
     favoritView.tag = FAVORITVIEW_TAG;
     _favoritButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _favoritButton.frame = CGRectMake(9, 3, leftView.frame.size.width - 18, TOOLBAR_HEIGHT - 6);
-    [_favoritButton setImage:[UIImage imageNamed:@"未标题-1" ] forState:UIControlStateNormal];
+    _favoritButton.frame = CGRectMake(xpos, 3, (39/36.0) * (TOOLBAR_HEIGHT - 6), TOOLBAR_HEIGHT - 6);
+    [_favoritButton setImage:[UIImage imageNamed:@"未标题-1" ] forState:UIControlStateNormal];//78 72
     [_favoritButton setImage:[UIImage imageNamed:@"未标题-1_2" ] forState:UIControlStateSelected];
-    _favoritButton.imageEdgeInsets = UIEdgeInsetsMake(0, 13, 0, 13);
+//    _favoritButton.imageEdgeInsets = UIEdgeInsetsMake(0, 13, 0, 13);
     [_favoritButton addTarget:self action:@selector(favoriteButtonActionobject:) forControlEvents:UIControlEventTouchUpInside];
     [favoritView addSubview:_favoritButton];
     
