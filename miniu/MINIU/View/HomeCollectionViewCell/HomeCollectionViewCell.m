@@ -90,9 +90,10 @@
     
     // 优惠价(汉字)
     [_pre setText:[NSString stringWithFormat:@"￥"]];
-    _pre.backgroundColor = [UIColor colorWithRed:0.600 green:0.502 blue:0.900 alpha:1];
+    _pre.backgroundColor = [UIColor clearColor]; //[UIColor colorWithRed:0.600 green:0.502 blue:0.900 alpha:1];
     //[UIColor colorWithPatternImage:[UIImage imageNamed:@"product_color_1_u390_selected"] ];
-    _pre.textColor = [UIColor whiteColor];
+    _pre.textColor = [UIColor colorWithRed:0.600 green:0.502 blue:0.900 alpha:1];
+//[UIColor whiteColor];
     _pre.font = [UIFont systemFontOfSize:13];
     //_pre.backgroundColor = [UIColor colorWithRed:0.1 green:0.2 blue:0.3 alpha:1];
 

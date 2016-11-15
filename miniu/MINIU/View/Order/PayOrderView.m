@@ -41,20 +41,20 @@
         
         self.priceLable = [[UILabel alloc] initWithFrame:CGRectMake(0, _topTipLable.selfMaxY + 20, kScreen_Width, 26)];
         [self.priceLable setTextAlignment:NSTextAlignmentCenter];
-        [self.priceLable setFont:[UIFont systemFontOfSize:20]];
+        [self.priceLable setFont:[UIFont systemFontOfSize:30]];
 
-        self.taxLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _priceLable.selfMaxY + 10, kScreen_Width/2, 20)];
+        self.taxLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _priceLable.selfMaxY + 20, kScreen_Width/2, 20)];
         [self.taxLabel setTextAlignment:NSTextAlignmentCenter];
         [self.taxLabel setFont:[UIFont systemFontOfSize:14]];
         self.taxLabel.textColor = [UIColor colorWithHexString:@"333333"];
         
-        self.totalLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreen_Width/2, _priceLable.selfMaxY + 10, kScreen_Width/2, 20)];
+        self.totalLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreen_Width/2, _priceLable.selfMaxY + 20, kScreen_Width/2, 20)];
         [self.totalLabel setTextAlignment:NSTextAlignmentCenter];
         [self.totalLabel setFont:[UIFont systemFontOfSize:14]];
         self.totalLabel.textColor = [UIColor colorWithRed:219/255.0 green:16/255.0 blue:94/255.0 alpha:1];
 
         
-        self.taxDescLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, _totalLabel.selfMaxY + 10, kScreen_Width-60, 20)];
+        self.taxDescLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, _totalLabel.selfMaxY + 15, kScreen_Width-60, 20)];
         [self.taxDescLabel setFont:[UIFont systemFontOfSize:12]];
         [self.taxDescLabel setTextAlignment:NSTextAlignmentCenter];
         self.taxDescLabel.numberOfLines = 1;
