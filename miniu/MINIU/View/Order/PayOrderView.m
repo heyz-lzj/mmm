@@ -39,16 +39,16 @@
         [self.topTipLable setTextAlignment:NSTextAlignmentCenter];
         [self.topTipLable setText:@"代购订单已生成,请尽快支付噢"];
         
-        self.priceLable = [[UILabel alloc] initWithFrame:CGRectMake(0, _topTipLable.selfMaxY + 20, kScreen_Width, 24)];
+        self.priceLable = [[UILabel alloc] initWithFrame:CGRectMake(0, _topTipLable.selfMaxY + 20, kScreen_Width, 26)];
         [self.priceLable setTextAlignment:NSTextAlignmentCenter];
-        [self.priceLable setFont:[UIFont systemFontOfSize:18]];
+        [self.priceLable setFont:[UIFont systemFontOfSize:20]];
 
-        self.taxLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _priceLable.selfMaxY + 10, kScreen_Width, 20)];
+        self.taxLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _priceLable.selfMaxY + 10, kScreen_Width/2, 20)];
         [self.taxLabel setTextAlignment:NSTextAlignmentCenter];
         [self.taxLabel setFont:[UIFont systemFontOfSize:14]];
         self.taxLabel.textColor = [UIColor colorWithHexString:@"333333"];
         
-        self.totalLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _taxLabel.selfMaxY + 10, kScreen_Width, 20)];
+        self.totalLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreen_Width/2, _priceLable.selfMaxY + 10, kScreen_Width/2, 20)];
         [self.totalLabel setTextAlignment:NSTextAlignmentCenter];
         [self.totalLabel setFont:[UIFont systemFontOfSize:14]];
         self.totalLabel.textColor = [UIColor colorWithRed:219/255.0 green:16/255.0 blue:94/255.0 alpha:1];
@@ -154,11 +154,7 @@
 //        NSRange contentRange = {0,[content length]};
 //        [content addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:contentRange];
         self.taxLabel.attributedText = content;
-
-        
         self.totalLabel.text = [NSString stringWithFormat:@"到手价：￥%0.2f",order.totalAmount];
-
-        
         
     }else{
         //前台计算
