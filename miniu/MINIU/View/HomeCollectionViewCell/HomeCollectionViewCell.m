@@ -89,7 +89,7 @@
     [_origPrice setText:[NSString stringWithFormat:@"暂无原价"]];
     
     // 优惠价(汉字)
-    [_pre setText:[NSString stringWithFormat:@"优惠价"]];
+    [_pre setText:[NSString stringWithFormat:@"￥"]];
     _pre.backgroundColor = [UIColor colorWithRed:0.600 green:0.502 blue:0.900 alpha:1];
     //[UIColor colorWithPatternImage:[UIImage imageNamed:@"product_color_1_u390_selected"] ];
     _pre.textColor = [UIColor whiteColor];

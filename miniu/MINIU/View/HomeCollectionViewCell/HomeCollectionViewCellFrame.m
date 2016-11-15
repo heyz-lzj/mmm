@@ -117,7 +117,7 @@
     // 优惠价(汉字)
     //CGFloat prefLableX = CGRectGetMaxX(_origPriceLableFrame)+20;
     if (_goodsEntity.isShowPrice) {
-        CGSize preLabelSize = [@"优惠价" sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:size ];
+        CGSize preLabelSize = [@"￥￥" sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:size ];
         CGFloat prefLableW = preLabelSize.width+4;
         CGFloat prefLableH = FONT_HEIGHT2;
         CGFloat prefLableX = CGRectGetMinX(_prePriceLableFrame) - prefLableW;
