@@ -35,7 +35,8 @@
 //        _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LoginIndexBG"]];
 //        _logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"miniu_login_logo"]];
 
-        _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"登录页"]];
+        _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"登录页new"]];
+        _backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
         _WXloginButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 201, 44)];
         [_WXloginButton setBackgroundImage:[UIImage imageNamed:@"WXLogin"] forState:UIControlStateNormal];
         [_WXloginButton addTarget:self action:@selector(WXLoginAction:) forControlEvents:UIControlEventTouchUpInside];

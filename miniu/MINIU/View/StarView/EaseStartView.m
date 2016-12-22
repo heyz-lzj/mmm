@@ -19,10 +19,10 @@
 + (instancetype)startView{
     UIImage *logoIcon = [UIImage imageNamed:@"miniu_login_logo"];
     
-    if (USER_IS_LOGIN) {
-        return [[self alloc] initWithBgImage:[UIImage imageNamed:@"登录页"] logoIcon:logoIcon descriptionStr:@"@2015"];
-    }
-    return [[self alloc] initWithBgImage:[UIImage imageNamed:@"登录页-nl"] logoIcon:logoIcon descriptionStr:@"@2015"];
+//    if (USER_IS_LOGIN) {
+//        return [[self alloc] initWithBgImage:[UIImage imageNamed:@"登录页"] logoIcon:logoIcon descriptionStr:@"@2016"];
+//    }
+    return [[self alloc] initWithBgImage:[UIImage imageNamed:@"登录页new"] logoIcon:logoIcon descriptionStr:@"@2016"];
 }
 
 - (instancetype)initWithBgImage:(UIImage *)bgImage logoIcon:(UIImage *)logoIcon descriptionStr:(NSString *)descriptionStr{

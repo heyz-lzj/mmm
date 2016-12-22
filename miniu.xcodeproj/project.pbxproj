@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C2BD5CE1E0C211200222F7F /* 登录页new.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C2BD5CD1E0C211200222F7F /* 登录页new.png */; };
 		18125CA31B8B173600A0AE5F /* OrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5106661B43AB5D007AB899 /* OrderTableViewController.m */; };
 		181339C31BE3079B00C07C09 /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181339C11BE3079B00C07C09 /* HomeCollectionViewCell.m */; };
 		181339C41BE3079B00C07C09 /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181339C11BE3079B00C07C09 /* HomeCollectionViewCell.m */; };
@@ -1887,6 +1888,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C2BD5CD1E0C211200222F7F /* 登录页new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录页new.png"; sourceTree = "<group>"; };
 		0CADFEB31DD6F7F60060078A /* miniu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = miniu.entitlements; sourceTree = "<group>"; };
 		181339C01BE3079B00C07C09 /* HomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewCell.h; sourceTree = "<group>"; };
 		181339C11BE3079B00C07C09 /* HomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewCell.m; sourceTree = "<group>"; };
@@ -6394,6 +6396,7 @@
 		3FF201AF1ADB96E1002FDE34 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0C2BD5CD1E0C211200222F7F /* 登录页new.png */,
 				3F61916C1AEF609200D24538 /* zh-Hans.lproj */,
 				3FF201B01ADB96E1002FDE34 /* miniu-info.plist */,
 				186B82171B9E86020042F734 /* miniubr-Info.plist */,
@@ -8048,6 +8051,7 @@
 				3F956C191B283A0B0081C73C /* a872b7fa7dfaeae3abae87462407321f in Resources */,
 				3F6190C91AEE90D800D24538 /* btn_020.disable@2x.png in Resources */,
 				3FBD9FEE1AE7AA4200E7439A /* chat_receiver_audio_playing003@2x.png in Resources */,
+				0C2BD5CE1E0C211200222F7F /* 登录页new.png in Resources */,
 				3FBDA0071AE7AA4200E7439A /* tabbar_chatsHL.png in Resources */,
 				189D1E1D1BE0806F006C2180 /* SMActionSheet.bundle in Resources */,
 				3FBDA0081AE7AA4200E7439A /* tabbar_chatsHL@2x.png in Resources */,
