@@ -17,8 +17,8 @@
 
 #define ShareWeChatTitle @""
 #define ShareWeChatFriedsTitle @""
-#define ShareWeChatRegisterDes @"资深一线买手，有品，有范，有逼格！足不出户，淘遍全球！"
-#define ShareWeChatRegisterTitle @"米妞，我的私人专属代购！"
+#define ShareWeChatRegisterDes @"一线资深时尚买手，有品，有范，有逼格！足不出户，淘遍全球！"
+#define ShareWeChatRegisterTitle @"米妞，品质生活全球购"
 
 // 百度  ＝＝＝》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》
 #define BaiduREPORT_ID @"c40a26f4ef"
